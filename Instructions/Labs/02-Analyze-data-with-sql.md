@@ -366,11 +366,11 @@ Now that you've explored various ways to query files in the data lake by using S
 4. In the **Results** pane, select **Chart** and view the chart that is created for you; which should be a line chart.
 5. Change the **Category column** to **OrderYear** so that the line chart shows the revenue trend over the three year period from 2019 to 2021:
 
-    ![A line chart showing revenue by year](../images/yearly-sales-line.png)
+    ![A line chart showing revenue by year](./images/yearly-sales-line.png)
 
 6. Switch the **Chart type** to **Column** to see the yearly revenue as a column chart:
 
-    ![A column chart showing revenue by year](../images/yearly-sales-column.png)
+    ![A column chart showing revenue by year](./images/yearly-sales-column.png)
 
 7. Experiment with the charting functionality in the query editor. It offers some basic charting capabilities that you can use while interactively exploring data, and you can save charts as images to include in reports. However, functionality is limited compared to enterprise data visualization tools such as Microsoft Power BI.
 
