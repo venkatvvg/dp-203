@@ -117,7 +117,7 @@ As you've seen, you can create the tables you need in your lake database from sc
 
 ### Define the table schema
 
-1. In the main pane, switch back to the **RetailDB** pane, which contains your database schema (currently containing only the **Customer** table).
+1. In the main pane, switch back to the **RetailDB** pane by clicking **Data->Workspace->RetailDB->Rightclick(open)**, which contains your database schema (currently containing only the **Customer** table).
 2. In the **+ Table** menu, select **From template**. Then in the **Add from template** page, select **Retail** and click **Continue**.
 3. In the **Add from template (Retail)** page, wait for the table list to populate, and then expand **Product** and select **RetailProduct**. Then click **Add**. This adds a new table based on the **RetailProduct** template to your database.
 4. In the **RetailDB** pane, select the new **RetailProduct** table. Then, in the pane beneath the design canvas, on the **General** tab, change the name to **Product** and verify that the storage settings for the table specify the input folder **files/RetailDB/Product**.
