@@ -36,6 +36,22 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
     az account set --subscription $selectedSub
 }
 
+# Prompt user for a entering UCID
+write-host ""
+$ucid = ""
+$ucidstatus = 0
+while ($ucidstatus -ne 1)
+{
+    $ucid = Read-Host "Enter ucid(6+2)"
+    if(($ucid -cmatch '[a-z]') -and ($ucid.length -ge 5))
+    {
+        $ucidstatus = 1
+    }
+    else
+    {
+        Write-Output "$ucid please enter valid uc id Example:dekokdj"
+    }
+}
 
 # Register resource providers
 Write-Host "Registering resource providers...";
@@ -54,21 +70,21 @@ Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
 Write-Host "Preparing to deploy. This may take several minutes...";
 $delay = 0, 30, 60, 90, 120 | Get-Random
 Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
-
+$preferred_list = "eastus2","eastus","westus","westus2"
 # Get a list of locations for Azure Databricks
 $locations = Get-AzLocation | Where-Object {
     $_.Providers -contains "Microsoft.Databricks" -and
-    $_.Providers -contains "Microsoft.Compute"
+    $_.Providers -contains "Microsoft.Compute" -and
+    $_.Location -in $preferred_list
 }
 $max_index = $locations.Count - 1
-$rand = (0..$max_index) | Get-Random
-
 # Start with preferred region if specified, otherwise choose one at random
 if ($args.count -gt 0 -And $args[0] -in $locations.Location)
 {
     $Region = $args[0]
 }
 else {
+    $rand = (0..$max_index) | Get-Random
     $Region = $locations.Get($rand).Location
 }
 
@@ -116,7 +132,7 @@ while ($stop -ne 1){
         }
     }
     else {
-        $resourceGroupName = "dp203-$suffix"
+        $resourceGroupName = "dp203-24-$suffix"
         Write-Host "Creating $resourceGroupName resource group ..."
         New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
         $dbworkspace = "databricks$suffix"
