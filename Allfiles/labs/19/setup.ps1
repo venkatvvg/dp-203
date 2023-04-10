@@ -76,7 +76,8 @@ Start-Sleep -Seconds $delay # random delay to stagger requests from multi-studen
 $preferred_list = "eastus2","eastus","westus","westus2"
 $locations = Get-AzLocation | Where-Object {
     $_.Providers -contains "Microsoft.EventHub" -and
-    $_.Providers -contains "Microsoft.StreamAnalytics"
+    $_.Providers -contains "Microsoft.StreamAnalytics" -and
+    $_.Location -in $preferred_list
 }
 $max_index = $locations.Count - 1
 # Start with preferred region if specified, otherwise choose one at random
