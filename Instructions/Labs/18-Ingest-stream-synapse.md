@@ -37,7 +37,7 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
@@ -60,7 +60,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
 
 ### View the streaming source and database table
 
-1. When the setup script has finished running, minimize the cloud shell pane (you'll return to it later). Then in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Synapse workspace, a Storage account for your data lake, a Dedicated SQL pool, and an Event Hubs namespace.
+1. When the setup script has finished running, minimize the cloud shell pane (you'll return to it later). Then in the Azure portal, go to the **dp203-18-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Synapse workspace, a Storage account for your data lake, a Dedicated SQL pool, and an Event Hubs namespace.
 2. Select your Synapse workspace, and in its **Overview** page, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab. Synapse Studio is a web-based interface that you can use to work with your Synapse Analytics workspace.
 3. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio that you'll use to manage resources and perform data analytics tasks.
 4. On the **Manage** page, in the **SQL pools** section, select the **sql*xxxxxxx*** dedicated SQL pool row and then use its **&#9655;** icon to resume it.
@@ -82,7 +82,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
 2. On the **Home** page select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
     - **Basics**:
         - **Subscription**: Your Azure subscription
-        - **Resource group**: Select the existing **dp203-*xxxxxxx*** resouce group.
+        - **Resource group**: Select the existing **dp203-18-*xxxxxxx*** resouce group.
         - **Name**: `ingest-orders`
         - **Region**: Select the <u>same region</u> where your Synapse Analytics workspace is provisioned.
         - **Hosting environment**: Cloud
@@ -170,7 +170,7 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
 1. In the Azure portal, on the **Home** page select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
     - **Basics**:
         - **Subscription**: Your Azure subscription
-        - **Resource group**: Select the existing **dp203-*xxxxxxx*** resouce group.
+        - **Resource group**: Select the existing **dp203-18-*xxxxxxx*** resouce group.
         - **Name**: `aggregate-orders`
         - **Region**: Select the <u>same region</u> where your Synapse Analytics workspace is provisioned.
         - **Hosting environment**: Cloud
@@ -278,8 +278,8 @@ If you've finished exploring Azure Stream Analytics, you should delete the resou
 
 1. Close the Azure Synapse Studio browser tab and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group containing your Azure Synapse, Event Hubs, and Stream Analytics resources (not the managed resource group).
+3. Select the **dp203-18-*xxxxxxx*** resource group containing your Azure Synapse, Event Hubs, and Stream Analytics resources (not the managed resource group).
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+5. Enter the **dp203-18-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, the resources created in this exercise will be deleted.
