@@ -31,7 +31,7 @@ In this exercise, you'll need a premium-tier Azure Databricks workspace.
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
@@ -75,7 +75,7 @@ You can use the **default** database for your tables, but when building an analy
 ## Create a table
 
 1. In the sidebar, select **(+) New** and then select **File upload**.
-2. In the **Upload data** area, select **browse**. Then in the **Open** dialog box, enter `https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv` and select **Open**.
+2. In the **Upload data** area, select **browse**. Then in the **Open** dialog box, enter `https://raw.githubusercontent.com/venkatvvg/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv` and select **Open**.
 
     > **Tip**: If your browser or operating system doesn't support entering a URL in the **File** box, download the CSV file to your computer and then upload it from the local folder where you saved it.
 
@@ -129,7 +129,7 @@ Now you've finished exploring SQL Warehouses in Azure Databricks, you must delet
 
 1. Close the Azure Databricks workspace browser tab and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the resource group containing your Azure Databricks workspace (not the managed resource group).
+3. Select the resource group containing your Azure Databricks workspace **dp203-26-XXXXXX*(not the managed resource group).
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
 5. Enter the resource group name to confirm you want to delete it, and select **Delete**.
 
