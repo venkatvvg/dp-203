@@ -21,9 +21,8 @@ foreach ($provider in $provider_list){
 }
 
 
-
 # Generate unique random suffix
-[string]$suffix = "ghantavk1"
+[string]$suffix = "ghantavx"
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
 $resourceGroupName = "dp203-03-$suffix"
 $Region = "eastus"
@@ -58,6 +57,13 @@ $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspace).id
 Write-Output "$id"
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -SignInName $userName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+
+
+# Add the current userto Admin roles
+Write-Host "Granting $userName admin permissions..."
+Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -PrincipalId $idsaved # Workspace Admin
+Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "7af0c69a-a548-47d6-aea3-d00e69bd83aa" -PrincipalId $idsaved # SQL Admin
+Assign-SynapseRole -WorkspaceName $workspaceName -RoleId "c3a6d2f1-a26f-4810-9b0f-591308d5cbf1" -PrincipalId $idsaved  # Apache Spark Admin
 
 # Upload files
 write-host "Loading data..."

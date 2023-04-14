@@ -14,12 +14,6 @@
           "description": "Azure storage account name for data lake."
         }
       },
-      "currentuserid": {
-        "type": "String",
-        "metadata": {
-          "description": "Principal ID of current user"
-        }
-      },
       "sqlUser": {
         "type": "String",
         "metadata": {
@@ -171,7 +165,7 @@
         ],
         "properties": {
           "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
-          "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').parameters('currentuserid')]",
+          "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
           "principalType": "ServicePrincipal"
         }
       },
@@ -185,7 +179,7 @@
         ],
         "properties": {
           "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
-          "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').parameters('currentuserid')",
+          "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
           "principalType": "ServicePrincipal"
         }
       }
