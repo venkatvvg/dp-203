@@ -41,6 +41,13 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
     az account set --subscription $selectedSub
 }
 
+$subscriptionId = (Get-AzContext).Subscription.Id
+$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
+$id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspace).id
+Write-Output "$subscriptionId"
+Write-Output "$userName"
+Write-Output "$id"
+
 # Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
 write-host ""
