@@ -20,7 +20,7 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-[string]$suffix =  "TestingA"
+[string]$suffix =  "testingx"
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
 $resourceGroupName = "dp203-03-$suffix"
 
