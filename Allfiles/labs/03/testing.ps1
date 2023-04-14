@@ -36,6 +36,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
             }
     }
     $selectedSub = $subs[$selectedIndex].Id
+    Write-Output "$selectedSub"
     Select-AzSubscription -SubscriptionId $selectedSub
     az account set --subscription $selectedSub
 }
