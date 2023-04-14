@@ -31,6 +31,12 @@
       "metadata": {
         "description": "Suffix added to all resource name to make them unique."
       }
+    },
+    "uniqueID": {
+      "type": "String",
+      "metadata": {
+        "description": "Suffix of principle ID."
+      }
     }
   },
   "variables": {
@@ -165,7 +171,7 @@
       ],
       "properties": {
         "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
-        "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
+        "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').parameters('uniqueID')]",
         "principalType": "ServicePrincipal"
       }
     },
@@ -179,7 +185,7 @@
       ],
       "properties": {
         "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
-        "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
+        "principalId": "[reference(concat('Microsoft.Synapse/workspaces/', parameters('workspaceName')), '2019-06-01-preview', 'Full').parameters('uniqueID')]",
         "principalType": "ServicePrincipal"
       }
     }
