@@ -4,12 +4,11 @@ write-host "Starting script at $(Get-Date)"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module -Name Az.Synapse -Force
 
-$selectedSub = "1f550270-458f-4e93-ae8f-ea5797dfed4c"
-Select-AzSubscription -SubscriptionId $selectedSub
-az account set --subscription $selectedSub
-
+# Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
 $sqlPassword = "ABCabc@123"
+
+$idsaved = "5425a14b-9723-4328-89bf-5bc8a3a25349"
 
 # Register resource providers
 Write-Host "Registering resource providers...";
@@ -20,11 +19,11 @@ foreach ($provider in $provider_list){
     Write-Host "$provider : $status"
 }
 
-
 # Generate unique random suffix
-[string]$suffix = "ghantavx"
+[string]$suffix =  "TestingA"
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
 $resourceGroupName = "dp203-03-$suffix"
+
 $Region = "eastus"
 
 Write-Host "Creating $resourceGroupName resource group in $Region ..."
@@ -33,7 +32,6 @@ New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
 # Create Synapse workspace
 $synapseWorkspace = "synapse$suffix"
 $dataLakeAccountName = "datalake$suffix"
-$idsaved = "5425a14b-9723-4328-89bf-5bc8a3a25349"
 
 write-host "Creating $synapseWorkspace Synapse Analytics workspace in $resourceGroupName resource group..."
 write-host "(This may take some time!)"
@@ -45,7 +43,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -sqlUser $sqlUser `
   -sqlPassword $sqlPassword `
   -uniqueSuffix $suffix `
-  -currentuserid $idsaved `
   -Force
 
 # Make the current user and the Synapse service principal owners of the data lake blob store
@@ -54,7 +51,6 @@ write-host "(you can ignore any warnings!)"
 $subscriptionId = "1f550270-458f-4e93-ae8f-ea5797dfed4c"
 $userName = "ghantavk@mail.uc.edu"
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspace).id
-Write-Output "$id"
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -SignInName $userName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 
