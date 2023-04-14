@@ -47,7 +47,7 @@ while ($ucidstatus -ne 1)
     $ucid = Read-Host "Enter ucid(6+2)"
     if(($ucid -cmatch '[a-z]') -and ($ucid.length -ge 5))
     {
-        $complexPassword = 1
+        $ucidstatus = 1
     }
     else
     {

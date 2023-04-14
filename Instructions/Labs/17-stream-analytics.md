@@ -32,8 +32,9 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 4. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
 
     ```
-    rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    rm -r -203
+    -203 -f
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
@@ -50,7 +51,7 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 
 Before creating an Azure Stream Analytics job to process real-time data, let's take a look at the data stream it will need to query.
 
-1. When the setup script has finished running, resize or minimize the cloud shell pane so you can see the Azure portal (you'll return to the cloud shell later). Then in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Storage account and an Event Hubs namespace.
+1. When the setup script has finished running, resize or minimize the cloud shell pane so you can see the Azure portal (you'll return to the cloud shell later). Then in the Azure portal, go to the **dp203-17-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Storage account and an Event Hubs namespace.
 
     Note the **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
 
@@ -66,10 +67,10 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 Now you're ready to create an Azure Stream Analytics job to process the sales transaction data as it arrives in the event hub.
 
-1. In the Azure portal, on the **dp203-*xxxxxxx*** page, select **+ Create** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
+1. In the Azure portal, on the **dp203-17-*xxxxxxx*** page, select **+ Create** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
     - **Basics**:
         - **Subscription**: Your Azure subscription
-        - **Resource group**: Select the existing **dp203-*xxxxxxx*** resource group.
+        - **Resource group**: Select the existing **dp203-17-*xxxxxxx*** resource group.
         - **Name**: `process-orders`
         - **Region**: Select the region where your other Azure resources are provisioned.
         - **Hosting environment**: Cloud
@@ -158,7 +159,7 @@ OK, now you're ready to run the job and process some real-time sales order data.
     node ~/dp-203/Allfiles/labs/17/orderclient
     ```
 
-4. While the app is running, in the Azure portal, return to the page for the **dp203-*xxxxxxx*** resource group, and select the **store*xxxxxxxxxxxx*** storage account.
+4. While the app is running, in the Azure portal, return to the page for the **dp203-17-*xxxxxxx*** resource group, and select the **store*xxxxxxxxxxxx*** storage account.
 6. In the pane on the left of the storage account blade, select the **Containers** tab.
 7. Open the **data** container, and use the **&#8635; Refresh** button to refresh the view until you see a folder with the name of the current year.
 8. In the **data** container, navigate through the folder hierarchy, which includes the folder for the current year, with subfolders for the month and day.
@@ -183,7 +184,7 @@ OK, now you're ready to run the job and process some real-time sales order data.
 
 11. In the Azure Cloud Shell pane, wait for the order client app to finish.
 12. In the Azure portal, refresh the file to see the full set of results that were produced.
-13. Return to the **dp203-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
+13. Return to the **dp203-17-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
 14. At the top of the Stream Analytics job page, use the **&#11036; Stop** button to stop the job, confirming when prompted.
 
 ## Delete Azure resources
@@ -191,8 +192,8 @@ OK, now you're ready to run the job and process some real-time sales order data.
 If you've finished exploring Azure Stream Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
 
 1. In the Azure portal, on the **Home** page, select **Resource groups**.
-2. Select the **dp203-*xxxxxxx*** resource group containing your Azure Storage, Event Hubs, and Stream Analytics resources.
+2. Select the **dp203-17-*xxxxxxx*** resource group containing your Azure Storage, Event Hubs, and Stream Analytics resources.
 3. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-4. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+4. Enter the **dp203-17-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, the resources created in this exercise will be deleted.

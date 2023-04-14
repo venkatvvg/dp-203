@@ -33,7 +33,7 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
@@ -53,7 +53,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 > **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
-1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
+1. In the Azure portal, browse to the **dp203-23-*xxxxxxx*** resource group that was created by the script you ran.
 2. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
 3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
@@ -83,7 +83,7 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
     - **Default language**: Python
     - **Cluster**: *User Name's* cluster
 2. In the **Explore products** notebook, on the **&#128463; File** menu, select **Upload data to DBFS**.
-3. In the **Upload Data** dialog box, note the **DBFS Target Directory** to where the file will be uploaded. Then select the **Files** area, and in the **Open** dialog box, in the **File** box, type `https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/23/adventureworks/products.csv` and select **Open**. Then, when the file has been uploaded, select **Next**.
+3. In the **Upload Data** dialog box, note the **DBFS Target Directory** to where the file will be uploaded. Then select the **Files** area, and in the **Open** dialog box, in the **File** box, type `https://raw.githubusercontent.com/venkatvvg/dp-203-azure-data-engineer/master/Allfiles/labs/23/adventureworks/products.csv` and select **Open**. Then, when the file has been uploaded, select **Next**.
 
     > **Tip**: If your browser or operating system doesn't support entering a URL in the **File** box, download the CSV file to your computer and then upload it from the local folder where you saved it.
 
@@ -149,8 +149,8 @@ Now you've finished exploring Azure Databricks, you must delete the resources yo
 
 1. Close the Azure Databricks workspace browser tab and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
+3. Select the **dp203-23-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+5. Enter the **dp203-23-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, your resource group and the managed workspace resource groups associated with it will be deleted.

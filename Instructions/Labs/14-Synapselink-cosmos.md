@@ -31,7 +31,7 @@ To explore Azure Synapse Link for Azure Cosmos DB, you'll need an Azure Synapse 
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
@@ -54,7 +54,7 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 ### Enable the Synapse Link feature in your Cosmos DB account
 
-1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-*xxxxxxx*** resource group that was created by the setup script, and identify your **cosmos*xxxxxxxx*** Cosmos DB account.
+1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-14-*xxxxxxx*** resource group that was created by the setup script, and identify your **cosmos*xxxxxxxx*** Cosmos DB account.
 
     > **Note**: In some cases, the script may have tried to create Cosmos DB accounts in multiple regions, so there may be one or more accounts in a *deleting* state. The active account should be the one with the largest number at the end of its name - for example **cosmos*xxxxxxx*3**.
 
@@ -402,8 +402,8 @@ If you've finished exploring Azure Synapse Analytics, you should delete the reso
 
 1. Close the Synapse Studio browser tab and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and Spark pool for your workspace as well as your Azure Cosmos DB account.
+3. Select the **dp203-14-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and Spark pool for your workspace as well as your Azure Cosmos DB account.
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+5. Enter the **dp203-14-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, your Azure Synapse workspace resource group and the managed workspace resource group associated with it will be deleted.

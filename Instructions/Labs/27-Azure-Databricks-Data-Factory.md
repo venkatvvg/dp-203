@@ -31,7 +31,7 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
@@ -44,17 +44,17 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
 7. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review [What is Azure Data Factory?](https://docs.microsoft.com/azure/data-factory/introduction).
-8. When the script has completed, close the cloud shell pane and browse to the **dp203-*xxxxxxx*** resource group that was created by the script to verify that it contains an Azure Databricks workspace and an Azure Data Factory (V2) resource (you may need to refresh the resource group view).
+8. When the script has completed, close the cloud shell pane and browse to the **dp203-27-*xxxxxxx*** resource group that was created by the script to verify that it contains an Azure Databricks workspace and an Azure Data Factory (V2) resource (you may need to refresh the resource group view).
 
 ## Import a notebook
 
 You can create notebooks in your Azure Databricks workspace to run code written in a range of programming languages. In this exercise, you'll import an existing notebook that contains some Python code.
 
-1. In the Azure portal, in the **dp203-*xxxxxxx*** resource group, select the **databricks*xxxxxxx*** Azure Databricks Service resource.
+1. In the Azure portal, in the **dp203-27-*xxxxxxx*** resource group, select the **databricks*xxxxxxx*** Azure Databricks Service resource.
 2. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 3. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
 4. Expand the sidebar and select the **Workspace** tab. Then select the **Users** folder and in the **&#9662;** menu for the **&#8962; *your_user_name*** folder, select **Import**.
-5. In the **Import Notebooks** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/27/Process-Data.ipynb`
+5. In the **Import Notebooks** dialog box, select **URL** and import the notebook from `https://github.com/venkatvvg/dp-203-azure-data-engineer/raw/master/Allfiles/labs/27/Process-Data.ipynb`
 6. Select **&#8962; Home** and then open the **Process-Data** notebook you just imported.
 
     **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
@@ -78,7 +78,7 @@ To use Azure Databricks from an Azure Data Factory pipeline, you need to create 
 
 ### Create a linked service in Azure Data Factory
 
-1. Return to the Azure portal, and in the **dp203-*xxxxxxx*** resource group, select the **adf*xxxxxxx*** Azure Data Factory resource.
+1. Return to the Azure portal, and in the **dp203-27-*xxxxxxx*** resource group, select the **adf*xxxxxxx*** Azure Data Factory resource.
 2. On the **Overview** page, select the **Launch studio** to open the Azure Data Factory Studio. Sign in if prompted.
 3. In Azure Data Factory Studio, use the **>>** icon to expand the navigation pane on the left. Then select the **Manage** page.
 4. On the **Manage** page, in the **Linked services** tab, select **+ New** to add a new linked service.
@@ -159,7 +159,7 @@ Now you've finished exploring Azure Data Factory integration with Azure Databric
 
 1. Close the Azure Databricks workspace and Azure Data Factory studio browser tabs and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group containing your Azure Databricks and Azure Data Factory workspace (not the managed resource group).
+3. Select the **dp203-27-*xxxxxxx*** resource group containing your Azure Databricks and Azure Data Factory workspace (not the managed resource group).
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
 5. Enter the resource group name to confirm you want to delete it, and select **Delete**.
 

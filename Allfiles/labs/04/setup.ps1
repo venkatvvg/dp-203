@@ -39,6 +39,22 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
     az account set --subscription $selectedSub
 }
 
+# Prompt user for a entering UCID
+write-host ""
+$ucid = ""
+$ucidstatus = 0
+while ($ucidstatus -ne 1)
+{
+    $ucid = Read-Host "Enter ucid(6+2)"
+    if(($ucid -cmatch '[a-z]') -and ($ucid.length -ge 5))
+    {
+        $ucidstatus = 1
+    }
+    else
+    {
+        Write-Output "$ucid please enter valid uc id Example:dekokdj"
+    }
+}
 
 # Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
@@ -78,15 +94,15 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-[string]$suffix =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
+[string]$suffix = "$ucid"
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
-$resourceGroupName = "dp000-$suffix"
+$resourceGroupName = "dp203-04-$suffix"
 
 # Choose a random region
 Write-Host "Finding an available region. This may take several minutes...";
 $delay = 0, 30, 60, 90, 120 | Get-Random
 Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
-$preferred_list = "australiaeast","centralus","southcentralus","eastus2","northeurope","southeastasia","uksouth","westeurope","westus","westus2"
+$preferred_list = "eastus2","eastus","westus","westus2"
 $locations = Get-AzLocation | Where-Object {
     $_.Providers -contains "Microsoft.Synapse" -and
     $_.Providers -contains "Microsoft.Sql" -and

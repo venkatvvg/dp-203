@@ -31,7 +31,7 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
@@ -48,7 +48,7 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
 8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What's available in the Microsoft Purview governance portal?](https://docs.microsoft.com/azure/purview/overview) article in the Microsoft Purview documentation.
 
-> **Tip**: If, after running the setup script you decide not to complete the lab, be sure to delete the **dp203-*xxxxxxx*** resource group that was created in your Azure subscription to avoid unnecessary Azure costs.
+> **Tip**: If, after running the setup script you decide not to complete the lab, be sure to delete the **dp203-22-*xxxxxxx*** resource group that was created in your Azure subscription to avoid unnecessary Azure costs.
 
 ## Catalog Azure Synapse Analytics data assets in Microsoft Purview
 
@@ -58,7 +58,7 @@ With Microsoft Purview, you can catalog data assets across your data estate - in
 
 Microsoft Purview is configured to use a managed identity. In order to catalog data assets, this managed identity account must have access to the Azure Synapse Analytics workspace and the storage account for its data lake store.
 
-1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-*xxxxxxx*** resource group that was created by the setup script and view the resources that it created. These include:
+1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-22-*xxxxxxx*** resource group that was created by the setup script and view the resources that it created. These include:
     - A storage account with a name similar to **datalake*xxxxxxx***.
     - A Microsoft Purview account with a name similar to **purview*xxxxxxx***.
     - A dedicated SQL pool with a name similar to **sql*xxxxxxx***.
@@ -78,7 +78,7 @@ Microsoft Purview is configured to use a managed identity. In order to catalog d
     ![A screenshot of the Select managed identities tab.](./images/storage-role-members.png)
 
 7. Use the **Review + Assign** button to complete the role assignment, which makes the **purview*xxxxxxx*** account used by the managed identity for your Microsoft Purview resource a member of the **Storage Blob Data Reader** role for your storage account.
-8. In the Azure portal, return to the **dp203-*xxxxxxx*** resource group and open the **synapse*xxxxxxx*** Synapse Analytics workspace. Then, on its **Access Control (IAM)** page, add a role assignment to make the **purview*xxxxxxx*** managed identity account a member of the **Reader** role in the workspace.
+8. In the Azure portal, return to the **dp203-22-*xxxxxxx*** resource group and open the **synapse*xxxxxxx*** Synapse Analytics workspace. Then, on its **Access Control (IAM)** page, add a role assignment to make the **purview*xxxxxxx*** managed identity account a member of the **Reader** role in the workspace.
 
 ### Configure database permissions for Microsoft Purview
 
@@ -129,7 +129,7 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
 
 Now that you've configured the required access for Microsoft Purview to scan the data sources used by your Azure Synapse Analytics workspace, you can register them in your Microsoft Purview catalog.
 
-1. Switch back to the browser tab containing the Azure portal, and view the page for the **dp203-*xxxxxxx*** resource group.
+1. Switch back to the browser tab containing the Azure portal, and view the page for the **dp203-22-*xxxxxxx*** resource group.
 2. Open the **purview*xxxxxxx*** Microsoft Purview account, and on its **Overview** page, use the link to open the **Microsoft Purview Governance Portal** in a  new browser tab - signing in if prompted.
 
     >**Tip**: Alternatively, you can browse directly to https://web.purview.azure.com in a new browser tab.
@@ -283,8 +283,8 @@ If you've finished exploring Azure Synapse Analytics, you should delete the reso
 
 1. Close the Synapse Studio browser tab and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and dedicated SQL pool for your workspace.
+3. Select the **dp203-22-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and dedicated SQL pool for your workspace.
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+5. Enter the **dp203-22-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, your Azure Synapse workspace resource group and the managed workspace resource group associated with it will be deleted.

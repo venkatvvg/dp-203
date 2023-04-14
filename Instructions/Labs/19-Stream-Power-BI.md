@@ -39,7 +39,7 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
@@ -77,7 +77,7 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 1. Switch back to the browser tab containing the Azure portal, and when the script has finished, note the region where your **db000-*xxxxxxx*** resource group was provisioned.
 2. On the **Home** page of the Azure portal, select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
     - **Subscription**: Your Azure subscription
-    - **Resource group**: Select the existing **dp203-*xxxxxxx*** resouce group.
+    - **Resource group**: Select the existing **dp203-19-*xxxxxxx*** resouce group.
     - **Name**: `stream-orders`
     - **Region**: Select the region where your Synapse Analytics workspace is provisioned.
     - **Hosting environment**: Cloud
@@ -184,8 +184,8 @@ If you've finished exploring Azure Stream Analytics and Power BI, you should del
 1. Close the browser tab containing the Power BI report. Then in the **Workspaces** pane, in the **&#8942;** menu for your workspace select **Workspace settings** and delete the workspace.
 2. Return to the browser tab containing the Azure Portal, close the cloud shell pane, and use the **&#128454; Stop** button to stop the Stream Analytics job. Wait for the notification that the Stream Analytics job has stopped successfully.
 3. On the Azure portal, on the **Home** page, select **Resource groups**.
-4. Select the **dp203-*xxxxxxx*** resource group containing your Azure Event Hub and Stream Analytics resources.
+4. Select the **dp203-19-*xxxxxxx*** resource group containing your Azure Event Hub and Stream Analytics resources.
 5. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-6. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+6. Enter the **dp203-19-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, the resources created in this exercise will be deleted.

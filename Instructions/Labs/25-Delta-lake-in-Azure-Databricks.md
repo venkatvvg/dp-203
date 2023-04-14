@@ -31,7 +31,7 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/venkatvvg/dp-203-azure-data-engineer dp-203
     ```
 
 5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
@@ -51,7 +51,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 > **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
-1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
+1. In the Azure portal, browse to the **dp203-25-*xxxxxxx*** resource group that was created by the script you ran.
 2. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
 3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
@@ -77,7 +77,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
 
 1. Expand the task bar on the left and select the **Workspace** tab. Then select the **Users** folder and in the **&#9662;** menu for the **&#8962; *your_user_name*** folder, select **Import**.
-2. In the **Import Notebooks** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`.
+2. In the **Import Notebooks** dialog box, select **URL** and import the notebook from `https://github.com/venkatvvg/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`.
 3. Select **&#8962; Home** and then open the **Delta-Lake** notebook you just imported.
 4. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to work with Delta Lake.
 
@@ -87,8 +87,8 @@ Now you've finished exploring Delta Lake in Azure Databricks, you must delete th
 
 1. Close the Azure Databricks workspace browser tab and return to the Azure portal.
 2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
+3. Select the **dp203-25-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
 4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+5. Enter the **dp203-25-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     After a few minutes, your resource group and the managed workspace resource groups associated with it will be deleted.
