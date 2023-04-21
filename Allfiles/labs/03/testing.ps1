@@ -4,11 +4,45 @@ write-host "Starting script at $(Get-Date)"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module -Name Az.Synapse -Force
 
+# Handle cases where the user has multiple subscriptions
+$subs = Get-AzSubscription | Select-Object
+if($subs.GetType().IsArray -and $subs.length -gt 1){
+    Write-Host "You have multiple Azure subscriptions - please select the one you want to use:"
+    for($i = 0; $i -lt $subs.length; $i++)
+    {
+            Write-Host "[$($i)]: $($subs[$i].Name) (ID = $($subs[$i].Id))"
+    }
+    $selectedIndex = -1
+    $selectedValidIndex = 0
+    while ($selectedValidIndex -ne 1)
+    {
+            $enteredValue = Read-Host("Enter 0 to $($subs.Length - 1)")
+            if (-not ([string]::IsNullOrEmpty($enteredValue)))
+            {
+                if ([int]$enteredValue -in (0..$($subs.Length - 1)))
+                {
+                    $selectedIndex = [int]$enteredValue
+                    $selectedValidIndex = 1
+                }
+                else
+                {
+                    Write-Output "Please enter a valid subscription number."
+                }
+            }
+            else
+            {
+                Write-Output "Please enter a valid subscription number."
+            }
+    }
+    $selectedSub = $subs[$selectedIndex].Id
+    Select-AzSubscription -SubscriptionId $selectedSub
+    az account set --subscription $selectedSub
+}
+
 # Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
+write-host ""
 $sqlPassword = "ABCabc@123"
-
-$idsaved = "5425a14b-9723-4328-89bf-5bc8a3a25349"
 
 # Register resource providers
 Write-Host "Registering resource providers...";
@@ -20,9 +54,9 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-[string]$suffix =  "testingx"
+[string]$suffix =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
-$resourceGroupName = "dp203-03-$suffix"
+$resourceGroupName = "dp203-01-$suffix"
 
 $Region = "eastus"
 
@@ -43,17 +77,17 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -sqlUser $sqlUser `
   -sqlPassword $sqlPassword `
   -uniqueSuffix $suffix `
-  -uniqueID $idsaved `
   -Force
 
 # Make the current user and the Synapse service principal owners of the data lake blob store
 write-host "Granting permissions on the $dataLakeAccountName storage account..."
 write-host "(you can ignore any warnings!)"
-$subscriptionId = "1f550270-458f-4e93-ae8f-ea5797dfed4c"
-$userName = "ghantavk@mail.uc.edu"
+$subscriptionId = (Get-AzContext).Subscription.Id
+$userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
 $id = (Get-AzADServicePrincipal -DisplayName $synapseWorkspace).id
 New-AzRoleAssignment -Objectid $id -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
 New-AzRoleAssignment -SignInName $userName -RoleDefinitionName "Storage Blob Data Owner" -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$dataLakeAccountName" -ErrorAction SilentlyContinue;
+Set-AzSynapseRoleAssignment -WorkspaceName $synapseWorkspace -SignInName "ghantavk@mail.uc.edu" -Role "Synapse Administrator"
 
 # Upload files
 write-host "Loading data..."

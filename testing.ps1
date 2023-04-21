@@ -12,3 +12,6 @@ For ($i=0; $i -lt $ucid.Length; $i++) {
     Write-Output "$principleidcurrent"
     Write-Output "$usernamecurrent"
 }
+
+
+curl -i https://git.io -F "url=https://github.com/technoweenie" -F "code=t"
